@@ -1251,7 +1251,7 @@ Secara keseluruhan, visualisasi hasil analisis menunjukkan bahwa pola tidur maha
 
 ## Kesimpulan
 
-Berdasarkan seluruh tahapan analisis yang telah dilakukan, penelitian mengenai **pola tidur mahasiswa Program Studi Statistika Universitas Mataram** menggunakan metode **Cluster Sampling** berhasil dilaksanakan dengan baik.
+Berdasarkan seluruh tahapan analisis yang telah dilakukan, penelitian mengenai **pola tidur mahasiswa Program Studi Statistika Universitas Mataram** menggunakan metode **Two-Stage Cluster Sampling** berhasil dilaksanakan dengan baik.
 
 Proses analisis diawali dengan pengujian kualitas instrumen melalui uji validitas dan uji reliabilitas. Hasil pengujian menunjukkan bahwa instrumen penelitian memiliki **10 butir pertanyaan yang valid** dan tingkat reliabilitas yang **sangat baik**, ditunjukkan oleh nilai **Cronbach's Alpha sebesar 0,901**. Dengan demikian, instrumen penelitian dinilai layak digunakan untuk analisis lebih lanjut.
 
