@@ -1,6 +1,6 @@
 # cluster-sampling-sleep-study
 A cluster sampling project to estimate the average sleep duration and sleep quality among Statistics students.
-# 🌙 Sleep Matters: Estimasi Rata-Rata Durasi dan Kualitas Tidur Mahasiswa Statistika Universitas Mataram Menggunakan Cluster Sampling
+# 🌙 Sleep Matters: Estimasi Rata-Rata Durasi dan Kualitas Tidur Mahasiswa Statistika Universitas Mataram Menggunakan Two-Stage Cluster Sampling
 
 ![R](https://img.shields.io/badge/R-4.5-blue)
 ![Method](https://img.shields.io/badge/Method-Cluster%20Sampling-green)
@@ -8,7 +8,30 @@ A cluster sampling project to estimate the average sleep duration and sleep qual
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-# Daftar Isi
+# 📑 Daftar Isi
+
+- [Project Description](#Project-Description)
+- [Struktur Repository](#struktur-repository)
+- [Latar Belakang](#latar-belakang)
+- [Tujuan Penelitian](#tujuan-penelitian)
+- [Ringkasan Hasil Penelitian](#ringkasan-hasil-penelitian)
+- [Metodologi Penelitian](#metodologi-penelitian)
+- [Alur Analisis](#alur-analisis)
+- [Langkah-Langkah Analisis](#langkah-langkah-analisis)
+  - [1. Import Data](#1-import-data)
+  - [2. Uji Validitas Instrumen](#2-uji-validitas-instrumen)
+  - [3. Uji Reliabilitas Instrumen](#3-uji-reliabilitas-instrumen)
+  - [4. Pengolahan Data Penelitian](#4-pengolahan-data-penelitian)
+  - [5. Analisis Statistik Deskriptif](#5-analisis-statistik-deskriptif)
+  - [6. Estimasi Rata-rata Durasi Tidur](#6-estimasi-rata-rata-durasi-tidur)
+  - [7. Analisis Variabel Durasi Tidur](#7-analisis-variabel-durasi-tidur)
+  - [8. Analisis Variabel Pola/Kebiasaan Tidur](#8-analisis-variabel-polakebiasaan-tidur)
+  - [9. Analisis Variabel Kualitas Tidur](#9-analisis-variabel-kualitas-tidur)
+  - [10. Analisis Variabel Dampak Tidur terhadap Aktivitas Akademik](#10-analisis-variabel-dampak-tidur-terhadap-aktivitas-akademik)
+  - [11. Visualisasi Hasil Analisis](#11-visualisasi-hasil-analisis)
+  - [12. Kesimpulan](#12-kesimpulan)
+- [Rekomendasi](#rekomendasi)
+- [Link Kuesioner](#link-kuesioner)
 
 
 ## 📖 Project Description
