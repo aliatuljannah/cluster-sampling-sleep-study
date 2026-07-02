@@ -8,16 +8,29 @@ A cluster sampling project to estimate the average sleep duration and sleep qual
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
+
+## 📖 Project Description
+
+Penelitian ini bertujuan untuk mengestimasi rata-rata durasi tidur dan kualitas tidur mahasiswa Program Studi Statistika Universitas Mataram menggunakan metode **Cluster Sampling** berdasarkan angkatan.
+
+Data penelitian diperoleh melalui penyebaran kuesioner kepada mahasiswa Statistika yang dipilih sebagai sampel dari cluster angkatan. Variabel yang diamati meliputi durasi tidur, pola atau kebiasaan tidur, kualitas tidur, serta dampak tidur terhadap aktivitas akademik.
+
+Analisis dilakukan menggunakan pendekatan statistika survei untuk memperoleh estimasi rata-rata, standar error (SE), interval kepercayaan 95%, serta ukuran presisi estimasi. Hasil penelitian diharapkan dapat memberikan gambaran mengenai kondisi tidur mahasiswa Statistika sekaligus menjadi bahan evaluasi dalam meningkatkan kesehatan dan produktivitas akademik mahasiswa.
+
 # 📑 Daftar Isi
 
 - [Project Description](#Project-Description)
+- [Objectives](#Objectives)
 - [Struktur Repository](#struktur-repository)
-- [Latar Belakang](#latar-belakang)
-- [Tujuan Penelitian](#tujuan-penelitian)
-- [Ringkasan Hasil Penelitian](#ringkasan-hasil-penelitian)
-- [Metodologi Penelitian](#metodologi-penelitian)
-- [Alur Analisis](#alur-analisis)
-- [Langkah-Langkah Analisis](#langkah-langkah-analisis)
+- [Dataset](#Dataset)
+- [Penjelasan Folder](#Penjelasan-Folder)
+- [Background](#Background)
+- [Research Objectives](#Research-Objectives)
+- [Research Highlights](#Research-Highlights)
+- [Research Methodology](#Research-Methodology)
+- [Ilustrasi Two-Stage Cluster Sampling](#Ilustrasi-Two-Stage-Cluster-Sampling)
+- [Analysis Workflow](#Analysis-Workflow)
+- [Analisis Data](#Analisis-Data)
   - [1. Import Data](#1-import-data)
   - [2. Uji Validitas Instrumen](#2-uji-validitas-instrumen)
   - [3. Uji Reliabilitas Instrumen](#3-uji-reliabilitas-instrumen)
@@ -32,16 +45,6 @@ A cluster sampling project to estimate the average sleep duration and sleep qual
   - [12. Kesimpulan](#12-kesimpulan)
 - [Rekomendasi](#rekomendasi)
 - [Link Kuesioner](#link-kuesioner)
-
-
-## 📖 Project Description
-
-Penelitian ini bertujuan untuk mengestimasi rata-rata durasi tidur dan kualitas tidur mahasiswa Program Studi Statistika Universitas Mataram menggunakan metode **Cluster Sampling** berdasarkan angkatan.
-
-Data penelitian diperoleh melalui penyebaran kuesioner kepada mahasiswa Statistika yang dipilih sebagai sampel dari cluster angkatan. Variabel yang diamati meliputi durasi tidur, pola atau kebiasaan tidur, kualitas tidur, serta dampak tidur terhadap aktivitas akademik.
-
-Analisis dilakukan menggunakan pendekatan statistika survei untuk memperoleh estimasi rata-rata, standar error (SE), interval kepercayaan 95%, serta ukuran presisi estimasi. Hasil penelitian diharapkan dapat memberikan gambaran mengenai kondisi tidur mahasiswa Statistika sekaligus menjadi bahan evaluasi dalam meningkatkan kesehatan dan produktivitas akademik mahasiswa.
-
 ## 🎯 Objectives
 
 - Mengestimasi rata-rata durasi tidur mahasiswa Statistika Universitas Mataram.
@@ -82,6 +85,12 @@ Sleep-Matters/
 ```
 
 ---
+## Dataset
+
+- Jumlah responden : **30 mahasiswa**
+- Teknik sampling : **Two-Stage Cluster Sampling**
+- Instrumen : **Kuesioner Google Form**
+- Skala pengukuran : **Likert 1–5**
 
 ### Penjelasan Folder
 
@@ -120,7 +129,7 @@ Penelitian ini berhasil mengestimasi karakteristik pola tidur mahasiswa Program 
 | Indikator | Hasil |
 |------------|:------:|
 | Jumlah Responden | **30 Mahasiswa** |
-| Teknik Sampling | **Cluster Sampling** |
+| Teknik Sampling | **Two-Stage Cluster Sampling** |
 | Jumlah Item Kuesioner Awal | **12 Item** |
 | Item Valid | **10 Item** |
 | Nilai Cronbach's Alpha | **0.901** |
@@ -143,7 +152,52 @@ Populasi penelitian adalah seluruh mahasiswa Program Studi Statistika Universita
 
 ### Sampling Technique
 
-Teknik sampling yang digunakan adalah **Cluster Sampling** dengan **angkatan sebagai cluster**. Pemilihan cluster dilakukan secara acak (*simple random selection*) menggunakan Microsoft Excel. Setelah cluster terpilih, responden pada cluster tersebut dijadikan sampel penelitian.
+Teknik pengambilan sampel yang digunakan adalah **Two-Stage Cluster Sampling**.
+
+Pada **tahap pertama (First Stage)**, populasi dikelompokkan berdasarkan **angkatan** sebagai *primary cluster*, yaitu angkatan **2023, 2024, dan 2025**. Selanjutnya dilakukan pemilihan cluster secara acak (*simple random sampling*) menggunakan Microsoft Excel.
+
+Pada **tahap kedua (Second Stage)**, setiap angkatan yang terpilih kembali dikelompokkan berdasarkan **kelas** sebagai *secondary cluster*. Selanjutnya dilakukan pemilihan kelas secara acak (*simple random sampling*). Seluruh mahasiswa pada kelas yang terpilih dijadikan sebagai responden penelitian.
+
+### Sample
+
+Berdasarkan proses **Two-Stage Cluster Sampling**, diperoleh dua cluster akhir, yaitu:
+
+- Angkatan **2024** Kelas **A**
+- Angkatan **2025** Kelas **A**
+
+Seluruh mahasiswa pada kedua kelas tersebut dijadikan sebagai sampel penelitian sehingga jumlah responden yang dianalisis sebanyak **30 mahasiswa**.
+
+### Estimation Method
+
+Penelitian ini menggunakan **Mean Estimation (Estimasi Rata-rata)** untuk mengestimasi rata-rata durasi tidur mahasiswa berdasarkan data sampel yang diperoleh melalui teknik **Two-Stage Cluster Sampling**. Estimasi dilakukan dengan menghitung nilai rata-rata sampel (*sample mean*), kemudian dilengkapi dengan **standard error**, **margin of error**, dan **95% confidence interval** untuk memberikan gambaran mengenai ketelitian hasil estimasi terhadap parameter populasi.
+
+### Ilustrasi Two-Stage Cluster Sampling
+
+```text
+Populasi
+Mahasiswa Statistika Universitas Mataram
+                    │
+                    ▼
+          Stage 1 (Cluster 1)
+      Berdasarkan Angkatan
+ ┌────────┬────────┬────────┐
+ │ 2023   │ 2024   │ 2025   │
+ └────────┴────────┴────────┘
+            │
+            ▼
+      Stage 2 (Cluster 2)
+      Berdasarkan Kelas
+      2024 → A, B, C
+      2025 → A, B
+            │
+            ▼
+      Cluster Terpilih
+      • 2024 Kelas A
+      • 2025 Kelas A
+            │
+            ▼
+       30 Responden
+```
 
 ### Data Collection
 
@@ -160,7 +214,6 @@ Sebelum analisis utama dilakukan, instrumen penelitian diuji menggunakan **uji v
 
 Data yang telah memenuhi uji validitas dan reliabilitas kemudian dianalisis menggunakan pendekatan statistika survei. Analisis meliputi:
 
-- Data cleaning
 - Statistik deskriptif
 - Estimasi rata-rata durasi tidur
 - Analisis deskriptif terhadap pola tidur, kualitas tidur, dan dampak tidur terhadap aktivitas akademik
