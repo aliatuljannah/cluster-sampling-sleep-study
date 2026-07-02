@@ -393,71 +393,81 @@ library(readxl)
 # Mengimpor data uji validitas (15 responden)
 validitas <- read_excel("data/Data_Uji_Validitas.xlsx")
 
-# Hanya item Likert
+# Memilih item kuesioner
 item <- validitas[,7:16]
 
+# Mengubah menjadi numerik
 item <- data.frame(lapply(item, as.numeric))
 
+# Menghitung skor total
 skor_total <- rowSums(item)
 
+# Menyimpan hasil uji validitas
 hasil_validitas <- data.frame()
 
+# Uji validitas setiap item
 for(i in 1:ncol(item)){
-  
+
   hasil <- cor.test(item[,i], skor_total)
-  
+
   hasil_validitas <- rbind(
     hasil_validitas,
     data.frame(
       Item = names(item)[i],
       r_hitung = round(hasil$estimate,3),
       p_value = round(hasil$p.value,4),
-      Keputusan = ifelse(hasil$p.value<0.05,
-                         "Valid",
-                         "Tidak Valid")
+      Keputusan = ifelse(
+        hasil$p.value < 0.05,
+        "Valid",
+        "Tidak Valid"
+      )
     )
   )
 }
 
+# Menampilkan hasil
 hasil_validitas
+```
 
 ---
 
 ## Keterangan
 
 - `read_excel()` digunakan untuk mengimpor data uji validitas.
-- `item <- validitas[,6:17]` digunakan untuk memilih seluruh item kuesioner.
-- `rowSums()` digunakan untuk menghitung skor total responden.
+- `item <- validitas[,7:16]` digunakan untuk memilih seluruh item kuesioner yang diuji.
+- `rowSums()` digunakan untuk menghitung skor total setiap responden.
 - `cor.test()` digunakan untuk menghitung korelasi Pearson antara setiap item dengan skor total.
-- Nilai **p-value < 0,05** menunjukkan bahwa item pertanyaan **valid**.
-- Hasil pengujian akan menampilkan nilai **r hitung**, **p-value**, dan keputusan valid atau tidak valid untuk setiap item.
+- Item dinyatakan **valid** apabila memiliki **p-value < 0,05**.
+
+---
 
 ## Output
 
 | No | Item | r-hitung | p-value | Keputusan |
-|---|---|---:|---:|---|
-|1|Saya tidur sekitar 7–9 jam setiap malam.|0.690|0.0044|Valid|
-|2|Saya memiliki jam tidur yang teratur setiap hari.|0.708|0.0032|Valid|
-|3|Saya biasanya tidur sebelum pukul 23.00.|0.776|0.0007|Valid|
-|4|Saya sering begadang hingga larut malam.|-0.742|0.0015|Valid*|
-|5|Saya mudah tertidur ketika mulai beristirahat.|0.596|0.0190|Valid|
-|6|Saya jarang terbangun di tengah malam.|0.526|0.0441|Valid|
-|7|Saat bangun pagi, tubuh saya terasa segar.|0.799|0.0004|Valid|
-|8|Saya merasa kualitas tidur saya baik.|0.815|0.0002|Valid|
-|9|Saya merasa mengantuk saat mengikuti perkuliahan.|-0.662|0.0072|Valid*|
-|10|Saya mampu berkonsentrasi dengan baik saat belajar.|0.601|0.0177|Valid|
+|---:|---|---:|---:|---|
+| 1 | Saya tidur sekitar 7–9 jam setiap malam. | 0.690 | 0.0044 | Valid |
+| 2 | Saya memiliki jam tidur yang teratur setiap hari. | 0.708 | 0.0032 | Valid |
+| 3 | Saya biasanya tidur sebelum pukul 23.00. | 0.776 | 0.0007 | Valid |
+| 4 | Saya sering begadang hingga larut malam. | -0.742 | 0.0015 | Valid* |
+| 5 | Saya mudah tertidur ketika mulai beristirahat. | 0.596 | 0.0190 | Valid |
+| 6 | Saya jarang terbangun di tengah malam. | 0.526 | 0.0441 | Valid |
+| 7 | Saat bangun pagi, tubuh saya terasa segar. | 0.799 | 0.0004 | Valid |
+| 8 | Saya merasa kualitas tidur saya baik. | 0.815 | 0.0002 | Valid |
+| 9 | Saya merasa mengantuk saat mengikuti perkuliahan. | -0.662 | 0.0072 | Valid* |
+| 10 | Saya mampu berkonsentrasi dengan baik saat belajar. | 0.601 | 0.0177 | Valid |
+
+> **Catatan:** Tanda (*) menunjukkan item negatif (*unfavorable item*) yang akan dilakukan **reverse coding** pada tahap pengolahan data.
 
 ---
 
 ## Interpretasi Hasil
 
-Berdasarkan hasil uji validitas, seluruh butir pernyataan yang digunakan dalam instrumen penelitian memiliki **nilai p-value kurang dari 0,05**, sehingga seluruh item dinyatakan **valid**.
+Berdasarkan hasil uji validitas, seluruh butir pernyataan memiliki **nilai p-value < 0,05**, sehingga seluruh item dinyatakan **valid**.
 
-Nilai korelasi (r-hitung) berkisar antara **0.526 hingga 0.815** untuk item positif, sedangkan dua item negatif memiliki nilai korelasi sebesar **-0.742** dan **-0.662**. Nilai negatif tersebut disebabkan karena kedua pernyataan merupakan **item unfavorable (reverse statement)** yang arah skornya berlawanan dengan konstruk kualitas tidur.
+Nilai korelasi (*r-hitung*) berkisar antara **0,526 hingga 0,815** untuk item positif, sedangkan dua item negatif memiliki nilai korelasi sebesar **-0,742** dan **-0,662**. Nilai korelasi negatif muncul karena kedua pernyataan merupakan **item unfavorable**, sehingga arah skornya berlawanan dengan konstruk yang diukur.
 
-Secara keseluruhan, hasil ini menunjukkan bahwa setiap butir pernyataan mampu mengukur aspek yang ingin diteliti, sehingga instrumen layak digunakan pada tahap analisis selanjutnya.
+Dengan demikian, seluruh item kuesioner layak digunakan pada tahap analisis selanjutnya.
 
----
 # 3. Uji Reliabilitas Instrumen
 
 ## Tujuan
@@ -466,13 +476,14 @@ Uji reliabilitas dilakukan untuk mengetahui tingkat konsistensi instrumen peneli
 
 Sebelum dilakukan uji reliabilitas, dilakukan **reverse coding** terhadap item yang bersifat negatif (*unfavorable item*) agar seluruh item memiliki arah penilaian yang sama.
 
-Instrumen dinyatakan reliabel apabila nilai **Cronbach's Alpha ≥ 0,70**.
+Instrumen dinyatakan **reliabel** apabila memiliki nilai **Cronbach's Alpha ≥ 0,70**.
 
 ---
 
 ## Sintaks R
 
 ```r
+# Memanggil package
 library(psych)
 
 # Reverse coding item negatif
@@ -485,7 +496,7 @@ hasil_reliabilitas <- alpha(item)
 # Menampilkan hasil
 hasil_reliabilitas
 
-# Nilai Cronbach Alpha
+# Menampilkan nilai Cronbach's Alpha
 hasil_reliabilitas$total$raw_alpha
 ```
 
@@ -494,10 +505,10 @@ hasil_reliabilitas$total$raw_alpha
 ## Keterangan
 
 - `library(psych)` digunakan untuk memanggil package **psych**.
-- `item[,4] <- 6 - item[,4]` digunakan untuk melakukan **reverse coding** pada item "Saya sering begadang hingga larut malam."
-- `item[,9] <- 6 - item[,9]` digunakan untuk melakukan **reverse coding** pada item "Saya merasa mengantuk saat mengikuti perkuliahan."
-- `alpha(item)` digunakan untuk menghitung nilai Cronbach's Alpha.
-- `hasil_reliabilitas$total$raw_alpha` digunakan untuk menampilkan nilai Cronbach's Alpha.
+- `item[,4] <- 6 - item[,4]` digunakan untuk melakukan **reverse coding** pada item *"Saya sering begadang hingga larut malam."*
+- `item[,9] <- 6 - item[,9]` digunakan untuk melakukan **reverse coding** pada item *"Saya merasa mengantuk saat mengikuti perkuliahan."*
+- `alpha(item)` digunakan untuk menghitung nilai **Cronbach's Alpha**.
+- `hasil_reliabilitas$total$raw_alpha` digunakan untuk menampilkan nilai akhir **Cronbach's Alpha**.
 
 ---
 
@@ -515,15 +526,11 @@ hasil_reliabilitas$total$raw_alpha
 
 Berdasarkan hasil analisis menggunakan package **psych** pada software **R**, diperoleh nilai **Cronbach's Alpha sebesar 0,9009**.
 
-Nilai tersebut lebih besar dari batas minimum reliabilitas (**0,70**), sehingga instrumen penelitian dinyatakan **reliabel**. Hal ini menunjukkan bahwa seluruh butir pertanyaan memiliki tingkat konsistensi internal yang sangat baik dalam mengukur konstruk kualitas dan durasi tidur mahasiswa.
+Nilai tersebut lebih besar dari batas minimum reliabilitas (**0,70**), sehingga instrumen penelitian dinyatakan **reliabel**. Hal ini menunjukkan bahwa seluruh butir pertanyaan memiliki tingkat konsistensi internal yang **sangat baik** dalam mengukur konstruk yang diteliti.
 
-Sebelum pengujian reliabilitas dilakukan, dua butir pertanyaan yang bersifat negatif (*unfavorable item*) telah dilakukan **reverse coding** agar arah penilaian seluruh item menjadi konsisten.
+Sebelum pengujian reliabilitas dilakukan, dua butir pertanyaan yang bersifat negatif (*unfavorable item*) telah melalui proses **reverse coding** sehingga seluruh item memiliki arah penilaian yang konsisten.
 
----
-
-## Kesimpulan
-
-Hasil uji reliabilitas menunjukkan nilai **Cronbach's Alpha sebesar 0,9009**, sehingga instrumen penelitian memenuhi kriteria **sangat reliabel (excellent reliability)**. Oleh karena itu, seluruh butir pertanyaan yang telah dinyatakan valid dapat digunakan pada tahap pengumpulan data penelitian utama.
+Dengan demikian, seluruh item yang telah dinyatakan valid juga memenuhi kriteria **sangat reliabel (excellent reliability)** dan layak digunakan pada tahap analisis data penelitian utama.
 
 # 4. Pengolahan Data Penelitian
 
